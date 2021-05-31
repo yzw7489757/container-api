@@ -1,0 +1,25 @@
+.page-root {
+  display: none;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  align-items: stretch;
+  align-content: flex-start;
+  flex-shrink: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  will-change: left;
+  transition-property: left;
+  transition-duration: unset;
+  transition-delay: unset;
+  transition-timing-function: ease-in;
+  left: 0;
+  background: #f5f5f5;
+  pointer-events: none;
+  &.page-visible {
+    display: flex;
+    pointer-events: auto;
+    // transition-duration: 0;
+  }
+}

@@ -1,0 +1,18 @@
+0 silly argv {
+0 silly argv   _: [ 'clean' ],
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': '/Users/ziwen/private/container/node_modules/.bin/lerna'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath /Users/ziwen/private/container
+3 info Removing the following directories:
+4 info clean packages/container-api/node_modules
+4 info clean packages/container-web-api/node_modules
+5 info clean removing /Users/ziwen/private/container/packages/container-api/node_modules
+6 silly rimrafDir /Users/ziwen/private/container/packages/container-api/node_modules
+7 info clean removing /Users/ziwen/private/container/packages/container-web-api/node_modules
+8 silly rimrafDir /Users/ziwen/private/container/packages/container-web-api/node_modules
+9 error Error: Command failed with exit code 1: /Users/ziwen/.nvm/versions/node/v12.18.3/bin/node /Users/ziwen/private/container/node_modules/_rimraf@3.0.2@rimraf/bin.js --no-glob /Users/ziwen/private/container/packages/container-api/node_modules/
+9 error     at makeError (/Users/ziwen/private/container/node_modules/_execa@5.0.0@execa/lib/error.js:59:11)
+9 error     at handlePromise (/Users/ziwen/private/container/node_modules/_execa@5.0.0@execa/index.js:114:26)
+9 error     at processTicksAndRejections (internal/process/task_queues.js:97:5)

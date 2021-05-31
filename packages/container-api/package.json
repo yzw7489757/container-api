@@ -1,0 +1,49 @@
+{
+  "name": "@iron-man/container-api",
+  "version": "0.0.1",
+  "description": "abstract API center",
+  "keywords": [
+    "abstract",
+    "api"
+  ],
+  "author": "Seven",
+  "homepage": "",
+  "license": "MIT",
+  "main": "src/index.js",
+  "directories": {
+    "build": "tsc -b ./tsconfig.package.json",
+    "test": "__tests__"
+  },
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "start": "",
+    "prepare": "yarn",
+    "build:umd": "",
+    "build:typing": "tsc -p ./tsconfig.json",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/plugin-proposal-async-generator-functions": "^7.13.15",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-decorators": "^7.13.15",
+    "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
+    "@babel/plugin-proposal-optional-chaining": "^7.13.12",
+    "@babel/plugin-transform-runtime": "^7.13.15",
+    "@babel/preset-env": "^7.14.1",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/preset-typescript": "^7.13.0",
+    "@types/lodash": "^4.14.168",
+    "@types/react": "^17.0.2",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

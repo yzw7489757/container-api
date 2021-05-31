@@ -1,0 +1,19 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./lib",
+    "rootDir": "./src",
+    "sourceMap": false,
+    "declarationMap": false,
+    "emitDeclarationOnly": true
+  },
+  "references": [],
+  "include": [
+    "src",
+    "typing",
+    "demo"
+  ],
+  "exclude": [
+    "lib"
+  ]
+}

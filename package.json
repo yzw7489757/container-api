@@ -1,0 +1,20 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "start": "lerna exec -- npm run start",
+    "build:umd": "lerna exec -- npm run build:umd",
+    "build:typing": "rimraf packages/**/lib && lerna exec -- npm run build:typing",
+    "bootstrap": "yarn && lerna bootstrap",
+    "clean": "lerna clean && rimraf packages/**/lib",
+    "build": "tsc --build packages/tsconfig.project.json",
+    "watch": "tsc --build --watch packages/tsconfig.project.json"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0",
+    "rimraf": "^3.0.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

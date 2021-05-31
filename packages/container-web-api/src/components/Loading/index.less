@@ -1,0 +1,208 @@
+#identity {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1) 0s;
+}
+#identity > div {
+  height: 10px;
+  width: 10px;
+  margin-top: -5px;
+  margin-left: -5px;
+  border-radius: 50%;
+  transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1) 0s;
+}
+#identity > div:nth-child(1) {
+  background-color: #419d78;
+}
+#identity > div:nth-child(2) {
+  background-color: #e0a458;
+}
+#identity > div:nth-child(3) {
+  background-color: #d9594c;
+}
+#identity > div:nth-child(4) {
+  background-color: #53a2be;
+}
+#identity > div:nth-child(1) {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+}
+#identity > div:nth-child(2) {
+  position: absolute;
+  top: 12px;
+  left: -12px;
+}
+#identity > div:nth-child(3) {
+  position: absolute;
+  top: -12px;
+  left: 12px;
+}
+#identity > div:nth-child(4) {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+/* #identity.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+} */
+#identity.rest > div {
+  top: 0;
+  margin-left: 0;
+  animation: none;
+}
+#identity.rest > div:nth-child(1) {
+  left: 0px;
+}
+#identity.rest > div:nth-child(2) {
+  left: 30px;
+}
+#identity.rest > div:nth-child(3) {
+  left: 60px;
+}
+#identity.rest > div:nth-child(4) {
+  left: 90px;
+}
+#identity.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+#identity.working > div:nth-child(1) {
+  animation: identityWorkingGreen 1.4s ease infinite;
+}
+#identity.working > div:nth-child(2) {
+  animation: identityWorkingYellow 1.4s ease infinite;
+}
+#identity.working > div:nth-child(3) {
+  animation: identityWorkingRed 1.4s ease infinite;
+}
+#identity.working > div:nth-child(4) {
+  animation: identityWorkingBlue 1.4s ease infinite;
+}
+#identity.robot > div {
+  animation: identityRobot 1.4s ease-in-out infinite;
+}
+#identity.robot > div:nth-child(2) {
+  animation-delay: 0.15s;
+}
+#identity.robot > div:nth-child(3) {
+  animation-delay: 0.3s;
+}
+#identity.robot > div:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+@keyframes identityRobot {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(14px);
+  }
+}
+
+@keyframes identityWorkingGreen {
+  0%, 100% {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+  }
+  25% {
+    position: absolute;
+    top: -12px;
+    left: 12px;
+  }
+  50% {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
+  75% {
+    position: absolute;
+    top: 12px;
+    left: -12px;
+  }
+}
+
+@keyframes identityWorkingYellow {
+  0%, 100% {
+    position: absolute;
+    top: 12px;
+    left: -12px;
+  }
+  25% {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+  }
+  50% {
+    position: absolute;
+    top: -12px;
+    left: 12px;
+  }
+  75% {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
+}
+
+@keyframes identityWorkingRed {
+  0%, 100% {
+    position: absolute;
+    top: -12px;
+    left: 12px;
+  }
+  25% {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
+  50% {
+    position: absolute;
+    top: 12px;
+    left: -12px;
+  }
+  75% {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+  }
+}
+
+@keyframes identityWorkingBlue {
+  0%, 100% {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
+  25% {
+    position: absolute;
+    top: 12px;
+    left: -12px;
+  }
+  50% {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+  }
+  75% {
+    position: absolute;
+    top: -12px;
+    left: 12px;
+  }
+}
+
+#signature:not(.loading) {
+  animation: signatureAnimation 1.4s steps(43) forwards;
+}
+
+@keyframes signatureAnimation {
+  100% {
+    background-position: 0 -1204px;
+  }
+}

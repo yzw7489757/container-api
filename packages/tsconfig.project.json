@@ -1,0 +1,14 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./container-api/tsconfig.json"
+    },
+    {
+      "path": "./container-web-api/tsconfig.json"
+    }
+  ],
+  "exclude": [
+    "/node_modules/"
+  ]
+}

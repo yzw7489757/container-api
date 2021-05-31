@@ -1,0 +1,28 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./lib",
+    "rootDir": "./src",
+    "jsx": "react",
+    "sourceMap": false,
+    "declarationMap": false,
+    "emitDeclarationOnly": true,
+    "strict": false,
+    "paths": {
+      "@/*": ["./src/*"],
+      "Utils/*": ["./src/utils/*"],
+      "*": ["./src/types/*"]
+    }
+  },
+  "references": [
+  
+  ],
+  "include": [
+    "./src",
+    "./typing"
+  ],
+  "exclude": [
+    "/lib",
+    "/node_modules/"
+  ]
+}
