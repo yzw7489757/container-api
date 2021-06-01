@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ReactNode } from "react";
+import { ReactNode, ComponentType } from "react";
 import { loadModule } from '@/utils/loadModule';
 import { ContainerOptions, ModuleType } from "@iron-man/container-api";
 import { InvalidModuleURIError } from '@/errors/InvalidComponentURI';
@@ -7,6 +7,7 @@ import { CantGetModuleInfo } from '@/errors/CantGetModuleInfo';
 import { InvalidComponentError } from '@/errors/InvalidComponentError';
 import createFetcher from '@/utils/createFetcher';
 import resolveModule from './resolveModule';
+import { Fetcher } from '../../utils/createFetcher';
 
 const getModuleName = (info: ModuleType): string => {
   switch(info.type) {
@@ -42,15 +43,15 @@ export default function createComponentRegister (options: ContainerOptions, inte
   const registryMap = new Map<string, ComponentInfo>();
 
   const register = (componentURI: string, component: ComponentInfo) => {
-    registryMap.set(componentURI, component);
+    registryMap.set(componentURI.replace(/(\:[a-zA-z0-9]+)/, ''), component);
     return component;
   };
 
   function registerComponentFromModuleInfo(componentURI: string, info: ModuleType) {
     let _component: any = null;
-    function createComponentInfo(fetchComponent: () => any): ComponentInfo {
+    function createComponentInfo(fetchComponent: Fetcher<any>): ComponentInfo {
       const load = () => {
-        const Component: any = fetchComponent();
+        const Component = fetchComponent();
         if (!Component) {
           throw new InvalidComponentError(componentURI, getModuleName(info));
         }
@@ -59,7 +60,7 @@ export default function createComponentRegister (options: ContainerOptions, inte
       return {
         id: componentURI,
         render: (props: any) => {
-          const Component: any = load()
+          const Component = load();
           return React.createElement(Component, props);
         },
         load,
@@ -85,6 +86,7 @@ export default function createComponentRegister (options: ContainerOptions, inte
           format: info.format || 'UMD'
         })
       );
+      
       return register(componentURI, createComponentInfo(fetcher));
     }
     throw new InvalidModuleURIError(componentURI);
@@ -96,7 +98,7 @@ export default function createComponentRegister (options: ContainerOptions, inte
       throw new InvalidModuleURIError(componentURI);
     }
 
-    const cache = registryMap.get(componentURI);
+    const cache = registryMap.get(componentURI.replace(/(\:[a-zA-z0-9]+)/, ''));
     if(cache) return cache;
 
     const info: ModuleType = options.customResolveModuleRule?.call(null, componentURI) || 

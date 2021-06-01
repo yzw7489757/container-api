@@ -81,7 +81,7 @@ export const createComponentLoader = (origin: ContainerAbility, options: Contain
       [onLoadRef]
     );
     return (
-      <ErrorBoundaryWrapper renderError={renderErrorForRender as ComponentType<any>} onError={handleErrorForRender}>
+      <ErrorBoundaryWrapper renderError={renderErrorForRender as ComponentType<ErrorRenderHelp>} onError={handleErrorForRender}>
         <Suspense fallback={RenderLoading()}>
           <ComponentRender componentURI={componentURI} innerProps={innerProps} onLoad={handleLoad} />
         </Suspense>
@@ -98,9 +98,11 @@ export const createComponentLoader = (origin: ContainerAbility, options: Contain
     const hasLoadRef = useRef(false);
     const onLoadRef = useSafeTrackingRef(props.onLoad);
     const componentInfo = useMemo(() => getComponentInfo(componentURI), [componentURI]);
+    console.log('componentInfo: ', componentInfo);
     const componentResult = componentInfo?.component;
 
     useEffect(() => {
+      console.log(componentResult)
       if (!hasLoadRef.current && componentResult) {
         hasLoadRef.current = true;
         onLoadRef.current(componentResult);

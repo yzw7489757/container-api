@@ -26,7 +26,7 @@ export const useDeepMemo = <T = any>(cb: () => T, deps: DependencyList, comparis
 export function useSafeTrackingRef(t: any) {
   let ref = useRef(t);
   useEffect(
-    function() {
+    function () {
       ref.current = t;
     },
     [t]
@@ -57,4 +57,27 @@ const _globalKey = '__react-context-key__';
 export function gud() {
   // eslint-disable-next-line no-return-assign
   return (window[_globalKey] = (window[_globalKey] || 0) + 1);
+}
+
+type Dispatch<A> = (value: A) => void;
+type SetAction<S> = Partial<S> | ((params: S) => S)
+export function useStateWithPartialSetter<T extends Record<string, any>>(initialState: T): [T, Dispatch<SetAction<T>>] {
+  const [state, setState] = useState<T>(initialState);
+
+  const _setState = useCallback((updater: Partial<T> | ((params: T) => Partial<T>)) => {
+    setState(pre => {
+      if (typeof updater === 'function') {
+        return {
+          ...pre,
+          ...(updater(pre)||{})
+        }
+      }
+      return {
+        ...pre,
+        ...(updater||{})
+      }
+    })
+  }, [])
+ 
+  return [state, _setState]
 }
